@@ -3,20 +3,20 @@ services:
     - docker
 
 before_install:
-    - docker build -t aqeelraza/docker-react -f ./client/Dockerfile.dev ./client
+    - docker build -t aqeelraza12/docker-react -f ./client/Dockerfile.dev ./client
 
 script:
-    - docker run -e CI=true aqeelraza/docker-react npm run test -- --coverage
+    - docker run -e CI=true aqeelraza12/docker-react npm run test -- --coverage
 
 after_success:
-    - docker build -t aqeelraza/multi-client ./client
-    - docker build -t aqeelraza/multi-nginx ./nginx
-    - docker build -t aqeelraza/multi-server ./server
-    - docker build -t aqeelraza/multi-worker ./worker
+    - docker build -t aqeelraza12/multi-client ./client
+    - docker build -t aqeelraza12/multi-nginx ./nginx
+    - docker build -t aqeelraza12/multi-server ./server
+    - docker build -t aqeelraza12/multi-worker ./worker
     # Log in to the docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     # Take those images and push them to docker hub
-    - docker push aqeelraza/multi-client
-    - docker push aqeelraza/multi-nginx
-    - docker push aqeelraza/multi-server
-    - docker push aqeelraza/multi-worker
+    - docker push aqeelraza12/multi-client
+    - docker push aqeelraza12/multi-nginx
+    - docker push aqeelraza12/multi-server
+    - docker push aqeelraza12/multi-worker
